@@ -1,0 +1,14 @@
+name: CounterApp
+options:
+  bundleIdPrefix: com.sylab
+  deploymentTarget:
+    iOS: "16.0"
+targets:
+  CounterApp:
+    type: application
+    platform: iOS
+    sources: [.] 
+    settings:
+      base:
+        CODE_SIGNING_ALLOWED: "NO"
+        CODE_SIGN_IDENTITY: ""
