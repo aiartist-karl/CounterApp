@@ -7,8 +7,10 @@ targets:
   CounterApp:
     type: application
     platform: iOS
-    sources: [.] 
+    sources: [.]
     settings:
       base:
         CODE_SIGNING_ALLOWED: "NO"
         CODE_SIGN_IDENTITY: ""
+        GENERATE_INFOPLIST_FILE: "YES"
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: "YES"
