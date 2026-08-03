@@ -9,4 +9,12 @@ jobs:
       - uses: actions/checkout@v4
       - run: brew install xcodegen
       - run: xcodegen generate
-      - run: xcodebuild -project CounterApp.xcodeproj -scheme CounterApp -destination generic/platform=iOS -configuration Release CODE_SIGNING_ALLOWED=NO build
+      - name: Build
+        run: |
+          xcodebuild -project CounterApp.xcodeproj -scheme CounterApp -destination generic/platform=iOS -configuration Release CODE_SIGNING_ALLOWED=NO build SYMROOT=$(pwd)/build
+          find build -name "*.app" -exec cp -r {} build/CounterApp.app \;
+          cd build && zip -r CounterApp.ipa CounterApp.app
+      - uses: actions/upload-artifact@v4
+        with:
+          name: CounterApp
+          path: build/CounterApp.ipa
